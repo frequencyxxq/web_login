@@ -24,7 +24,7 @@ class Register(View):
 
         exists = User.objects.filter(username=username).exists()
         if exists:
-            return HttpResponse("该账号已注销")
+            return HttpResponse("该账号已注册")
         User.objects.create_user(username=username, password=password)
 
         return redirect(reverse("login"))
