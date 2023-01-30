@@ -13,95 +13,98 @@
 
     <!-- 表单部分 -->
       <!-- 第一行 -->
-<form>
-  <div class="row">
-    <div class="col" >
-      <label for="organization">部室信息</label>
-      <select id="organization" class="form-control" Style="width:160px">
-        <option selected>请选择...</option>
-        <option>1.法律合规部</option>
-          <option>2.计划财务部</option>
-          <option>3.风险规划部</option>
-          <option>4.安全保卫部</option>
-          <option>5.运营管理部</option>
-          <option>6.金融市场部</option>
-      </select>
-    </div>
-    <div class="col">
-      <label for="number">部室位置</label>
-      <select id="number" class="form-control" Style="width:160px">
-        <option selected>请选择...</option>
-        <option>401</option>
-          <option>403</option>
-          <option>405</option>
-          <option>407</option>
-          <option>409</option>
-          <option>411</option>
-          <option>413</option>
-          <option>415</option>
-          <option>417</option>
-      </select>
-    </div>
-      <div class="col" >
-       <div class="custom-control custom-checkbox mr-sm-2">
-        <input type="checkbox" class="custom-control-input" id="customControlAutosizing">
-        <label class="custom-control-label" for="customControlAutosizing">记住我的选择</label>
+<form method="POST">
+    {% csrf_token %}
+  <div class="container">
+    <div class="row">
+      <div class="col-sm mt-3 mb-3" >
+        <label for="organization">部室信息</label>
+        <select id="organization" name="organization" class="form-control" Style="width:160px">
+          <option selected>请选择...</option>
+          <option value="法律合规部">1.法律合规部</option>
+            <option>2.计划财务部</option>
+            <option>3.风险规划部</option>
+            <option>4.安全保卫部</option>
+            <option>5.运营管理部</option>
+            <option>6.金融市场部</option>
+        </select>
       </div>
+      <div class="col-sm mt-3 mb-3">
+        <label for="number">部室位置</label>
+        <select id="number" name="number" class="form-control" Style="width:160px">
+          <option selected>请选择...</option>
+          <option value="401"> 401 </option>
+            <option>403</option>
+            <option>405</option>
+            <option>407</option>
+            <option>409</option>
+            <option>411</option>
+            <option>413</option>
+            <option>415</option>
+            <option>417</option>
+        </select>
+      </div>
+        <div class="col-sm mt-3 mb-3" >
+         <div class="custom-control custom-checkbox mr-sm-2">
+          <input type="checkbox" class="custom-control-input" id="customControlAutosizing">
+          <label class="custom-control-label" for="customControlAutosizing">记住我的选择</label>
+        </div>
+      </div>
+        <div class="col-sm mt-3 mb-3" ></div>
     </div>
+  
+    <!-- 第二行 -->
+    <div class="row mr-5">
+      <div class="col-sm mt-3 mb-3" >
+          <label for="reporter">报障人</label>
+        <input id="reporter" name="reporter" type="text" class="form-control" Style="width:160px" >
+      </div>
+      <div class="col-sm" >
+          <label for="telnumber">联系方式</label>
+        <input id="telnumber" name="telnumber" type="text" class="form-control" Style="width:160px" >
+      </div>
+        <div class="col-sm mt-3 mb-3" ></div>
+        <div class="col-sm mt-3 mb-3" ></div>
+    </div>
+  
+    <!-- 第三行 -->
+    <div class="row">
+        <div class="col-sm mt-3 mb-3" >
+        <label for="classification">故障分类</label>
+        <select id="classification" name=classification" class="form-control" Style="width:160px">
+          <option selected>请选择...</option>
+          <option value="设备类">1.设备类</option>
+            <option>2.软件类</option>
+            <option>3.网络类</option>
+            <option>4.网页类</option>
+            <option>5.其他</option>
+        </select>
+      </div>
+      <div class="col-sm mt-3 mb-3" >
+        <label for="classification2">具体分类</label>
+        <select id="classification2" name=classification2" class="form-control" Style="width:160px">
+          <option selected>请选择...</option>
+          <option value="打印机故障">打印机故障</option>
+            <option>扫描仪故障</option>
+            <option>系统故障</option>
+            <option>网络故障</option>
+        </select>
+      </div>
+        <div class="col-sm mt-3 mb-3" ></div>
+        <div class="col-sm mt-3 mb-3" ></div>
+    </div>
+  
+    <!-- 第四行 -->
+    <div class="col-sm mt-3 mb-3" >
+      <label for="description">故障详细描述</label>
+      <input id="description" name="description" type="text" class="form-control" placeholder="故障详细描述">
+    </div>
+  
+    <button type="submit" class="btn btn-primary mt-3 mb-3 ">提交</button>
+
   </div>
-</form>
+  
 
-      <!-- 第二行 -->
-    <form>
-  <div class="row mr-5">
-    <div class="col ml-5">
-        <label for="inputEmail4">报障人</label>
-      <input type="text" class="form-control" Style="width:160px" >
-    </div>
-    <div class="col mr-5">
-        <label for="inputEmail4">联系方式</label>
-      <input type="text" class="form-control" Style="width:160px" >
-    </div>
-  </div>
-   </form>
-
-          <!-- 第三行 -->
-<form>
-  <div class="row">
-    <div class="col" >
-
-      <label for="classification">故障分类</label>
-      <select id="classification" class="form-control" Style="width:160px">
-        <option selected>请选择...</option>
-        <option>1.设备类</option>
-          <option>2.软件类</option>
-          <option>3.网络类</option>
-          <option>4.网页类</option>
-          <option>5.其他</option>
-      </select>
-    </div>
-    <div class="col">
-      <label for="classification2">具体分类</label>
-      <select id="classification2" class="form-control" Style="width:160px">
-        <option selected>请选择...</option>
-        <option>打印机故障</option>
-          <option>扫描仪故障</option>
-          <option>系统故障</option>
-          <option>网络故障</option>
-      </select>
-    </div>
-  </div>
-</form>
-
-          <!-- 第四行 -->
-<form>
-
-    <div class="col">
-        <label for="description">故障详细描述</label>
-      <input type="text" class="form-control" placeholder="故障详细描述">
-    </div>
-
-  <button type="submit" class="btn btn-primary">提交</button>
 </form>
     <br>
     <a href="{% url 'logout' %}">退出登录</a>

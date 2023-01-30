@@ -50,11 +50,19 @@ class Login(View):
 
 class Index(View):
     def get(self, request):
+
         return render(request, "index.html")
 
     def post(self, request):
-        pass
-
+        organization = request.POST.get("organization", "")
+        number = request.POST.get("number", "")
+        reporter = request.POST.get("reporter", "")
+        telnumber = request.POST.get("telnumber", "")
+        classification = request.POST.get("classification", "")
+        classification2 = request.POST.get("classification2", "")
+        description = request.POST.get("description", "")
+        print(organization, number, reporter, telnumber, classification, classification2, description)
+        return redirect(reverse("index"))
 
 class LogoutUser(View):
     def get(self, request):
