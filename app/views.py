@@ -62,12 +62,19 @@ class Index(View):
         classification2 = request.POST.get("classification2", "")
         description = request.POST.get("description", "")
         print(organization, number, reporter, telnumber, classification, classification2, description)
-        return redirect(reverse("index"))
+        return redirect(reverse("submitted"))
 
 class LogoutUser(View):
     def get(self, request):
         logout(request)
         return redirect(reverse("register"))
+
+    def post(self, request):
+        pass
+
+class Submitted(View):
+    def get(self, request):
+        return render(request, "submitted.html")
 
     def post(self, request):
         pass
