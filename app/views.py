@@ -5,6 +5,7 @@ from django.views.generic import View
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
+from .models import Organization
 
 
 class Register(View):
@@ -50,8 +51,11 @@ class Login(View):
 
 class Index(View):
     def get(self, request):
+        context = {}
+        organizations = Organization.objects.all()
 
-        return render(request, "index.html")
+        context = {"organizations": organizations}
+        return render(request, "index.html", context=context)
 
     def post(self, request):
         organization = request.POST.get("organization", "")
@@ -61,8 +65,17 @@ class Index(View):
         classification = request.POST.get("classification", "")
         classification2 = request.POST.get("classification2", "")
         description = request.POST.get("description", "")
-        print(organization, number, reporter, telnumber, classification, classification2, description)
+        print(
+            organization,
+            number,
+            reporter,
+            telnumber,
+            classification,
+            classification2,
+            description,
+        )
         return redirect(reverse("submitted"))
+
 
 class LogoutUser(View):
     def get(self, request):
@@ -71,6 +84,7 @@ class LogoutUser(View):
 
     def post(self, request):
         pass
+
 
 class Submitted(View):
     def get(self, request):

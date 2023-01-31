@@ -28,12 +28,9 @@
         <label for="organization">部室信息</label>
         <select id="organization" name="organization" class="form-control" Style="width:160px">
           <option selected>请选择...</option>
-          <option value="法律合规部">1.法律合规部</option>
-            <option>2.计划财务部</option>
-            <option>3.风险规划部</option>
-            <option>4.安全保卫部</option>
-            <option>5.运营管理部</option>
-            <option>6.金融市场部</option>
+          {% for organization in organizations %}
+            <option value={{ organization.id }}> {{ organization.name }} </option>
+          {% endfor %}
         </select>
       </div>
       <div class="col-sm mt-3 mb-3">
