@@ -34,18 +34,12 @@
         </select>
       </div>
       <div class="col-sm mt-3 mb-3">
-        <label for="number">部室位置</label>
+        <label for="number">部室门牌</label>
         <select id="number" name="number" class="form-control" Style="width:160px">
           <option selected>请选择...</option>
-          <option value="401"> 401 </option>
-            <option>403</option>
-            <option>405</option>
-            <option>407</option>
-            <option>409</option>
-            <option>411</option>
-            <option>413</option>
-            <option>415</option>
-            <option>417</option>
+          {% for room in rooms %}
+            <option value={{ room.id }}> {{ room.number }} </option>
+          {% endfor %}
         </select>
       </div>
         <div class="col-sm mt-3 mb-3" >
@@ -97,6 +91,25 @@
         <div class="col-sm mt-3 mb-3" ></div>
         <div class="col-sm mt-3 mb-3" ></div>
     </div>
+
+  <div class="container">
+    <select>
+        <optgroup label="1.设备类">
+            <optgroup label="2.软件类">
+                <option>Item 1</option>
+                <option>Item 2</option>
+                <option>Item 3</option>
+            </optgroup>
+            <option>Item 2</option>
+            <option>Item 3</option>
+        </optgroup>
+        <optgroup label="具体故障">
+            <option>Item 1</option>
+            <option>Item 2</option>
+            <option>Item 3</option>
+        </optgroup>
+    </select>
+</diV>
   
     <!-- 第四行 -->
     <div class="col-sm mt-3 mb-3" >

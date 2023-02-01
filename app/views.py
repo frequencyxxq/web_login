@@ -5,7 +5,7 @@ from django.views.generic import View
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
-from .models import Organization
+from .models import Organization, Room
 
 
 class Register(View):
@@ -53,8 +53,10 @@ class Index(View):
     def get(self, request):
         context = {}
         organizations = Organization.objects.all()
+        rooms = Room.objects.all()
+        context["organizations"] = organizations
+        context["rooms"] = rooms
 
-        context = {"organizations": organizations}
         return render(request, "index.html", context=context)
 
     def post(self, request):

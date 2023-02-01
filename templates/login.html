@@ -6,23 +6,22 @@
     <meta charset="UTF-8">
     <title>登录</title>
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" media="screen" title="no title" charset="utf-8">
+     <link rel="stylesheet" href="{% static 'css/customize.css' %}" media="screen" title="no title" charset="utf-8">
 </head>
 <body>
-    <!-- 导航栏（包括银行logo） -->
-    {% include "_nav.html" %}
-<div class=" ">
-    故障报修系统
-</div>
+{#    <!-- 导航栏（包括银行logo） -->#}
+{#    {% include "_nav.html" %}#}
 
 
     <!-- 登录 -->
     <section class="h-100" style="margin-top: 10em;">
 		<div class="container h-100">
-			<div class="row justify-content-sm-center h-100">
+			<div class="row justify-content-end h-100">
 				<div class="col-xxl-4 col-xl-5 col-lg-5 col-md-7 col-sm-9">
 					<div class="card shadow-lg">
 						<div class="card-body p-5">
-							<h1 class="fs-4 card-title fw-bold mb-4">登录</h1>
+{#							<h1 class="fs-4 card-title fw-bold mb-4">故 障 报 修 系 统</h1>#}
+                            <h1 class="fs-4 card-title fw-bold mb-4">登 录</h1>
 							<form method="POST" class="needs-validation" novalidate="" autocomplete="off">
                                 {% csrf_token %}
 								<div class="mb-3">
