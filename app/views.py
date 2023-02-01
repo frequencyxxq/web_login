@@ -5,7 +5,7 @@ from django.views.generic import View
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
-from .models import Organization, Room
+from .models import Organization, Room, IssueCategory, IssueSubcategory, Ticket
 
 
 class Register(View):
@@ -54,28 +54,46 @@ class Index(View):
         context = {}
         organizations = Organization.objects.all()
         rooms = Room.objects.all()
+
+        categories = {}
+        issue_categories = IssueCategory.objects.all()
+        for issue_category in issue_categories:
+            issue_subcategories = IssueSubcategory.objects.filter(
+                issue_categoty=issue_category
+            )
+            categories[issue_category.content] = issue_subcategories
+
         context["organizations"] = organizations
         context["rooms"] = rooms
+        context["categories"] = categories
 
         return render(request, "index.html", context=context)
 
     def post(self, request):
-        organization = request.POST.get("organization", "")
+        organization_id = request.POST.get("organization", "")
         number = request.POST.get("number", "")
         reporter = request.POST.get("reporter", "")
         telnumber = request.POST.get("telnumber", "")
-        classification = request.POST.get("classification", "")
-        classification2 = request.POST.get("classification2", "")
+        issue_subcategory_id = request.POST.get("issue_subcategory", "")
         description = request.POST.get("description", "")
-        print(
-            organization,
-            number,
-            reporter,
-            telnumber,
-            classification,
-            classification2,
-            description,
+
+        issue_subcategory = IssueSubcategory.objects.get(id=issue_subcategory_id)
+        organization = Organization.objects.get(id=organization_id)
+        room = Room.objects.get(id=number)
+
+        ticket = Ticket.objects.create(
+            user=request.user,
+            reporter=reporter,
+            solved_by="",
+            mobile_phone=telnumber,
+            remark=description,
+            issue_category=issue_subcategory.issue_categoty,
+            issue_subcategory=issue_subcategory,
+            organization=organization,
+            room=room,
         )
+
+        print(ticket)
         return redirect(reverse("submitted"))
 
 

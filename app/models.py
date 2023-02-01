@@ -64,7 +64,9 @@ class IssueSubcategory(models.Model):
     content = models.CharField(
         max_length=255, verbose_name="内容", blank=False, default=None
     )
-    issue_categoty = models.ForeignKey(IssueCategory, on_delete=models.CASCADE)
+    issue_categoty = models.ForeignKey(
+        IssueCategory, related_name="issue_subcategories", on_delete=models.CASCADE
+    )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

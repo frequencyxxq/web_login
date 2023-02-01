@@ -66,50 +66,26 @@
     </div>
   
     <!-- 第三行 -->
-    <div class="row">
-        <div class="col-sm mt-3 mb-3" >
-        <label for="classification">故障分类</label>
-        <select id="classification" name=classification" class="form-control" Style="width:160px">
-          <option selected>请选择...</option>
-          <option value="设备类">1.设备类</option>
-            <option>2.软件类</option>
-            <option>3.网络类</option>
-            <option>4.网页类</option>
-            <option>5.其他</option>
-        </select>
-      </div>
-      <div class="col-sm mt-3 mb-3" >
-        <label for="classification2">具体分类</label>
-        <select id="classification2" name=classification2" class="form-control" Style="width:160px">
-          <option selected>请选择...</option>
-          <option value="打印机故障">打印机故障</option>
-            <option>扫描仪故障</option>
-            <option>系统故障</option>
-            <option>网络故障</option>
-        </select>
-      </div>
-        <div class="col-sm mt-3 mb-3" ></div>
-        <div class="col-sm mt-3 mb-3" ></div>
-    </div>
+  <div class="row">
+    <div class="col-sm mt-3 mb-3" >
+      <label for="issue_subcategory">故障类型</label>
+      <select name="issue_subcategory" class="form-control">
+        <option selected>请选择...</option>
 
-  <div class="container">
-    <select>
-        <optgroup label="1.设备类">
-            <optgroup label="2.软件类">
-                <option>Item 1</option>
-                <option>Item 2</option>
-                <option>Item 3</option>
-            </optgroup>
-            <option>Item 2</option>
-            <option>Item 3</option>
-        </optgroup>
-        <optgroup label="具体故障">
-            <option>Item 1</option>
-            <option>Item 2</option>
-            <option>Item 3</option>
-        </optgroup>
-    </select>
-</diV>
+        {% for key, values in categories.items %}
+          <optgroup label={{ key }}>
+            {% for issue_subcategory in values %}
+              <option value={{ issue_subcategory.id }}> {{ issue_subcategory.content }} </option>
+            {% endfor %}
+          </optgroup>
+        {% endfor %}
+
+      </select>
+    </div>
+    <div class="col-sm mt-3 mb-3" ></div>
+    <div class="col-sm mt-3 mb-3" ></div>
+    <div class="col-sm mt-3 mb-3" ></div>
+  </diV>
   
     <!-- 第四行 -->
     <div class="col-sm mt-3 mb-3" >
